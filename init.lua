@@ -47,7 +47,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim', version = "legacy", tag = "legacy", opts = {}},
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -75,26 +75,33 @@ require('lazy').setup({
     },
   },
 
-  { -- Catpucchin Teme
+  { -- Catpucchin Theme 
     'catppuccin/nvim',
-    priority = 1000,
+    -- priority = 1000,
     config = function()
       vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
+  -- { -- Gruvbox Theme
+  --   "ellisonleao/gruvbox.nvim",
+  --   config = function()
+  --    vim.cmd.colorscheme('gruvbox')
+  --   end,
+  --   priority = 1000,
+  -- },
 
-  { -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
-  },
+  -- { -- Set lualine as statusline
+  --   'nvim-lualine/lualine.nvim',
+  --   -- See `:help lualine.txt`
+  --   opts = {
+  --     options = {
+  --       icons_enabled = false,
+  --       theme = 'gruvbox',
+  --       component_separators = '|',
+  --       section_separators = '',
+  --     },
+  --   },
+  -- },
 
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -145,6 +152,9 @@ require('lazy').setup({
   {
     "christoomey/vim-tmux-navigator"
   },
+  {
+    'dart-lang/dart-vim-plugin'
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -185,6 +195,15 @@ vim.o.breakindent = true
 
 -- Enable audoindent
 vim.o.audoindent = true
+
+-- Tab Stop
+vim.o.tabstop = 2
+
+-- Shift Width
+vim.o.shiftwidth = 2
+
+-- Expand Tab
+vim.o.expandtab = true
 
 -- Save undo history
 vim.o.undofile = true
