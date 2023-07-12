@@ -75,13 +75,13 @@ require('lazy').setup({
     },
   },
 
-  { -- Catpucchin Theme 
-    'catppuccin/nvim',
-    -- priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
-    end,
-  },
+  -- { -- Catpucchin Theme 
+  --   'catppuccin/nvim',
+  --   -- priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'catppuccin-mocha'
+  --   end,
+  -- },
   -- { -- Gruvbox Theme
   --   "ellisonleao/gruvbox.nvim",
   --   config = function()
