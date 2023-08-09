@@ -3,7 +3,7 @@ return {
   version = "*",
   config = function ()
     require('lualine').setup {
-      options = {theme = 'onedark'}
+      options = {theme = 'gruvbox'}
     }
   end
 }

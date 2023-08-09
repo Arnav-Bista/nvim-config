@@ -1,7 +1,7 @@
 return {
-  'catppuccin/nvim',
+  'ellisonleao/gruvbox.nvim',
   config = function()
-    vim.cmd.colorscheme 'catppuccin-mocha'
+    vim.cmd.colorscheme 'gruvbox'
   end,
   priority = 1000,
 }

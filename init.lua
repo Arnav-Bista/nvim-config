@@ -47,7 +47,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', version = "legacy", tag = "legacy", opts = {}},
+      { 'j-hui/fidget.nvim', branch = "legacy", opts = {}},
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -90,18 +90,6 @@ require('lazy').setup({
   --   priority = 1000,
   -- },
 
-  -- { -- Set lualine as statusline
-  --   'nvim-lualine/lualine.nvim',
-  --   -- See `:help lualine.txt`
-  --   opts = {
-  --     options = {
-  --       icons_enabled = false,
-  --       theme = 'gruvbox',
-  --       component_separators = '|',
-  --       section_separators = '',
-  --     },
-  --   },
-  -- },
 
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -154,6 +142,10 @@ require('lazy').setup({
   },
   {
     'dart-lang/dart-vim-plugin'
+  },
+  -- For SUDO editing files
+  {
+    'lambdalisue/suda.vim'
   },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -248,8 +240,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- [[ Configure NeoTree Keymaps]]
-vim.keymap.set('n', '<leader>t',':NeoTreeFloat<CR>', {desc = "Open Neo[T]reeFloat" })
-vim.keymap.set('n', '<leader>nt',':NeoTreeShowToggle<CR>', {desc = "Open [N]eo[T]ree" })
+vim.keymap.set('n', '<leader>t',':Neotree float toggle<CR>', {desc = "Open Neo[t]ree float" })
+vim.keymap.set('n', '<leader>nt',':Neotree left toggle<CR>', {desc = "Open [N]eo[t]ree left" })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -449,6 +441,21 @@ mason_lspconfig.setup_handlers {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+function leave_snippet()
+    if
+        ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+        and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+        and not require('luasnip').session.jump_active
+    then
+        require('luasnip').unlink_current()
+    end
+end
+
+-- stop snippets when you leave to normal mode
+vim.api.nvim_command([[
+    autocmd ModeChanged * lua leave_snippet()
+]])
+
 luasnip.config.setup {}
 
 cmp.setup {
@@ -480,7 +487,7 @@ cmp.setup {
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
-        fallback()
+      fallback()
       end
     end, { 'i', 's' }),
   },
