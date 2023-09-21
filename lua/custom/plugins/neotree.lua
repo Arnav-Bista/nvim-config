@@ -9,6 +9,14 @@ return {
   config = function ()
     require('neo-tree').setup {
       enable_git_status = true,
+      filesystem = {
+        filtered_items = {
+          visible = false,
+          hide_by_pattern = {
+            "*.class",
+          }
+        }
+      }
     }
   end,
 }
