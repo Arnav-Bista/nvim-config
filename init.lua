@@ -14,6 +14,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
+  -- Auto close tags
+  'windwp/nvim-ts-autotag',
+
+  -- Color 
+  'norcalli/nvim-colorizer.lua',
 
   -- Git related plugins
   'tpope/vim-fugitive',
