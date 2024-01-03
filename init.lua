@@ -14,11 +14,41 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
+
+  -- docs 
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+  },
   -- Auto close tags
   'windwp/nvim-ts-autotag',
 
   -- Color 
   'norcalli/nvim-colorizer.lua',
+
+  {
+    'RRethy/vim-hexokinase',
+    build = "make hexokinase",
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
+  },
+
+  -- window picker
+  {
+    's1n7ax/nvim-window-picker',
+    config = function()
+      require'window-picker'.setup({
+        hint = 'floating-big-letter'
+      })
+    end,
+  },
+
+  -- Render stuff in Neovim
+  {
+   "edluffy/hologram.nvim"
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -206,6 +236,11 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Center on CF and CB 
+
+vim.keymap.set('n', '<C-b>', '<C-b>zz')
+vim.keymap.set('n', '<C-f>', '<C-f>zz')
 
 -- [[ Basic Keymaps ]]
 

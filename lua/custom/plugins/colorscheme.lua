@@ -6,3 +6,11 @@ return {
   priority = 1000,
 }
 
+
+-- return {
+--   'Mofiqul/dracula.nvim',
+--   config = function()
+--     vim.cmd.colorscheme 'dracula'
+--   end,
+--   priority = 1000,
+-- }

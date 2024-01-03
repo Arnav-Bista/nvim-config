@@ -1,3 +1,9 @@
+local keymaps = require('custom.core.keymaps')
+
+require('lspconfig').dartls.setup {
+  on_attach = keymaps.on_attach
+}
+
 return {
   'akinsho/flutter-tools.nvim',
   lazy = false,
@@ -5,6 +11,14 @@ return {
     'nvim-lua/plenary.nvim',
     'stevearc/dressing.nvim', -- optional for vim.ui.select
   },
-  config = true,
+  config = function ()
+    require('flutter-tools').setup {
+      lsp = {
+        on_attach = require('lspconfig').dartls.setup,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      },
+    }
+  end,
   opts = {}
 }
+
