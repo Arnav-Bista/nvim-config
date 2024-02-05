@@ -14,7 +14,9 @@ return {
   config = function ()
     require('flutter-tools').setup {
       lsp = {
-        on_attach = require('lspconfig').dartls.setup,
+        on_attach = require('lspconfig').dartls.setup {
+          on_attach = keymaps.on_attach
+        },
         capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
       },
     }

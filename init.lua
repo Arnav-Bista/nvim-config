@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -15,7 +17,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 
-  -- docs 
+  -- docs
   {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
@@ -24,9 +26,14 @@ require('lazy').setup({
   -- Auto close tags
   'windwp/nvim-ts-autotag',
 
-  -- Color 
+  -- Color
   'norcalli/nvim-colorizer.lua',
-
+   -- Haskell
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^3', -- Recommended
+    ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+  },
   {
     'RRethy/vim-hexokinase',
     build = "make hexokinase",
@@ -39,7 +46,7 @@ require('lazy').setup({
   {
     's1n7ax/nvim-window-picker',
     config = function()
-      require'window-picker'.setup({
+      require 'window-picker'.setup({
         hint = 'floating-big-letter'
       })
     end,
@@ -47,7 +54,7 @@ require('lazy').setup({
 
   -- Render stuff in Neovim
   {
-   "edluffy/hologram.nvim"
+    "edluffy/hologram.nvim"
   },
 
   -- Git related plugins
@@ -70,7 +77,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', branch = "legacy", opts = {}},
+      { 'j-hui/fidget.nvim',       branch = "legacy", opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -90,7 +97,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
 
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -118,7 +125,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -143,7 +150,7 @@ require('lazy').setup({
     },
     build = ":TSUpdate",
   },
-  { -- Nvim Surround. Surround selections.
+  {                -- Nvim Surround. Surround selections.
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
@@ -237,7 +244,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- Center on CF and CB 
+-- Center on CF and CB
 
 vim.keymap.set('n', '<C-b>', '<C-b>zz')
 vim.keymap.set('n', '<C-f>', '<C-f>zz')
@@ -267,8 +274,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 
 -- [[ Configure NeoTree Keymaps]]
-vim.keymap.set('n', '<leader>t',':Neotree float toggle<CR>', {desc = "Open Neo[t]ree float" })
-vim.keymap.set('n', '<leader>nt',':Neotree left toggle<CR>', {desc = "Open [N]eo[t]ree left" })
+vim.keymap.set('n', '<leader>t', ':Neotree float toggle<CR>', { desc = "Open Neo[t]ree float" })
+vim.keymap.set('n', '<leader>nt', ':Neotree left toggle<CR>', { desc = "Open [N]eo[t]ree left" })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -307,7 +314,7 @@ vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'java' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'java', 'http', 'json', 'haskell' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -454,9 +461,9 @@ local luasnip = require 'luasnip'
 
 function leave_snippet()
   if
-    ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
-    and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
-    and not require('luasnip').session.jump_active
+      ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+      and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+      and not require('luasnip').session.jump_active
   then
     require('luasnip').unlink_current()
   end
