@@ -209,7 +209,7 @@ vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 -- vim.keymap.set('n', '<leader>nt', ':Neotree left toggle<CR>', { desc = "Open [N]eo[t]ree left" })
 
 -- [[ Configure Oil Keymaps ]]
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
