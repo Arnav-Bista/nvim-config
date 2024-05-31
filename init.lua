@@ -87,6 +87,8 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim'
     }
   },
+  
+  { "nvim-neotest/nvim-nio" },
 
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
@@ -143,7 +145,7 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true
 
 -- Enable audoindent
-vim.o.audoindent = true
+vim.o.autoindent = true
 
 -- Tab Stop
 vim.o.tabstop = 2
