@@ -179,8 +179,8 @@ vim.o.termguicolors = true
 
 -- Center on CF and CB
 
-vim.keymap.set('n', '<C-b>', '<C-b>zz')
-vim.keymap.set('n', '<C-f>', '<C-f>zz')
+vim.keymap.set('n', '<C-b>', '<C-b>Mzz')
+vim.keymap.set('n', '<C-f>', '<C-f>Mzz')
 
 -- [[ Basic Keymaps ]]
 
