@@ -27,13 +27,13 @@ require('lazy').setup({
   -- Color
   'norcalli/nvim-colorizer.lua',
 
-  {
-    'RRethy/vim-hexokinase',
-    build = "make hexokinase",
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
+  -- {
+  --   'RRethy/vim-hexokinase',
+  --   build = "make hexokinase",
+  --   cond = function()
+  --     return vim.fn.executable 'make' == 1
+  --   end,
+  -- },
 
   -- Git related plugins
   'tpope/vim-fugitive',
