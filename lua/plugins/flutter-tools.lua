@@ -11,7 +11,12 @@ return {
     require('flutter-tools').setup {
       lsp = {
         capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = keymaps.on_attach
+        on_attach = keymaps.on_attach,
+        settings = {
+          lineLength = 120,
+          renameFilesWithClasses = "always",
+          documentation = "full",
+        }
       },
     }
   end,
