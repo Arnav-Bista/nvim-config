@@ -65,7 +65,16 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       branch = "legacy", opts = {} },
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -87,7 +96,7 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim'
     }
   },
-  
+
   { "nvim-neotest/nvim-nio" },
 
   -- Only load if `make` is available. Make sure you have the system

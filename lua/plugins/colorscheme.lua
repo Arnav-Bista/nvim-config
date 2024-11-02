@@ -26,6 +26,17 @@ return {
       shade = "dark",
       percentage = 0.15, -- percentage of the shade to apply to the inactive window
     },
+    show_end_of_buffer = false,
+    integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      treesitter = true,
+      mini = {
+        enabled = true,
+        indentscope_color = "",
+      },
+    }
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
