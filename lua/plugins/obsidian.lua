@@ -19,8 +19,8 @@ return {
   opts = {
     workspaces = {
       {
-        name = "Exam",
-        path = "~/Documents/UStA/CS2002_Revision"
+        name = "CS3050",
+        path = "~/Documents/UStA/CS3050"
       }
       -- {
       --   name = "personal",
