@@ -55,30 +55,29 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-
   {
-      'neovim/nvim-lspconfig',
-      dependencies = {
-        -- Automatically install LSPs to stdpath for neovim
-        { 'williamboman/mason.nvim', config = true },
-        'williamboman/mason-lspconfig.nvim',
-  
-        -- Useful status updates for LSP
-        {
-          "j-hui/fidget.nvim",
-          -- opts = {
-          --   notification = {
-          --     window = {
-          --       winblend = 0,
-          --       border = "rounded",
-          --     },
-          --   },
-          -- },
-        },
-  
-        -- Additional lua configuration, makes nvim stuff amazing!
-        'folke/neodev.nvim',
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+
+      -- Useful status updates for LSP
+      {
+        "j-hui/fidget.nvim",
+        -- opts = {
+        --   notification = {
+        --     window = {
+        --       winblend = 0,
+        --       border = "rounded",
+        --     },
+        --   },
+        -- },
       },
+
+      -- Additional lua configuration, makes nvim stuff amazing!
+      'folke/neodev.nvim',
+    },
   },
 
 
