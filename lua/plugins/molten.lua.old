@@ -1,0 +1,22 @@
+return {
+  "dccsillag/magma-nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  build = ":UpdateRemotePlugins",
+  config = function()
+    -- Configure Magma
+    vim.g.magma_automatically_open_output = false
+    vim.g.magma_image_provider = "kitty"
+    vim.g.magma_cell_highlight_group = "CursorLine"
+
+    -- Keybindings
+    vim.keymap.set('n', '<Leader>jr', ':MagmaEvaluateOperator<CR>', { silent = true, noremap = true })
+    vim.keymap.set('n', '<Leader>jl', ':MagmaEvaluateLine<CR>', { silent = true, noremap = true })
+    vim.keymap.set('v', '<Leader>jv', ':<C-u>MagmaEvaluateVisual<CR>', { silent = true, noremap = true })
+    vim.keymap.set('n', '<Leader>jc', ':MagmaReevaluateCell<CR>', { silent = true, noremap = true })
+    vim.keymap.set('n', '<Leader>jd', ':MagmaDelete<CR>', { silent = true, noremap = true })
+    vim.keymap.set('n', '<Leader>jo', ':MagmaShowOutput<CR>', { silent = true, noremap = true })
+    vim.keymap.set('n', '<Leader>ji', ':MagmaInit<CR>', { silent = true, noremap = true })
+  end,
+}

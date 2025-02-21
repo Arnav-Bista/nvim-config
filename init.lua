@@ -27,14 +27,6 @@ require('lazy').setup({
   -- Color
   'norcalli/nvim-colorizer.lua',
 
-  -- {
-  --   'RRethy/vim-hexokinase',
-  --   build = "make hexokinase",
-  --   cond = function()
-  --     return vim.fn.executable 'make' == 1
-  --   end,
-  -- },
-
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -135,7 +127,7 @@ require('lazy').setup({
 -- [[ Setting options ]]
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers relative hybrid default
 vim.wo.relativenumber = true
@@ -255,14 +247,35 @@ vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 
+vim.g.python3_host_prog = '/usr/bin/python3'
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
+  modules = {},
+  sync_install = false,
+  ignore_install = {},
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'java', 'http', 'json', 'haskell' },
+  ensure_installed =
+  {
+    'c',
+    'cpp',
+    'go',
+    'lua',
+    'python',
+    'rust',
+    'tsx',
+    'typescript',
+    'vimdoc',
+    'vim',
+    'java',
+    'http',
+    'json',
+    'haskell'
+  },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
