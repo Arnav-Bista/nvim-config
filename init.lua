@@ -347,6 +347,13 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  ts_ls = {},
+  tailwindcss = {},
+  clangd = {},
+  rust_analyzer = {},
+  -- denols = {},
+  -- ts_ls = {}
+
 }
 
 -- Setup neovim lua configuration
@@ -374,6 +381,21 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- require('lspconfig').denols.setup({
+--   capabilities = capabilities,
+--   on_attach = keymaps.on_attach,
+--   root_dir = require('lspconfig').util.root_pattern("deno.json", "deno.jsonc"),
+--   single_file_support = false,
+-- })
+--
+-- -- Custom setup for TypeScript
+-- require('lspconfig').ts_ls.setup({
+--   capabilities = capabilities,
+--   on_attach = keymaps.on_attach,
+--   root_dir = require('lspconfig').util.root_pattern("package.json", "tsconfig.json"),
+--   single_file_support = false,
+-- })
 
 -- nvim-cmp setup
 local cmp = require 'cmp'

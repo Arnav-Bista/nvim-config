@@ -4,12 +4,15 @@ return {
   lazy = false,
   version = '*', -- set this if you want to always pull the latest change
   opts = {
-    provider = "claude",
-    winfixbuf = false,
     hints = { enabled = false },
-    mappings = {
-      clear = "<leader>ac",
+    -- provider = "claude",
+    claude = {
+      model="claude-3-5-sonnet-20240620"
     },
+    -- winfixbuf = false,
+    -- mappings = {
+    --   clear = "<leader>ac",
+    -- },
   },
   build = "make",
   dependencies = {
