@@ -5,10 +5,15 @@ return {
   version = '*', -- set this if you want to always pull the latest change
   opts = {
     hints = { enabled = false },
-    -- provider = "claude",
-    claude = {
-      model="claude-3-5-sonnet-20240620"
-    },
+    provider = "copilot",
+    providers = {
+      copilot = {
+        model = "claude-3.7-sonnet"
+      }
+    }
+    -- claude = {
+    --   model="claude-3-5-sonnet-20240620"
+    -- },
     -- winfixbuf = false,
     -- mappings = {
     --   clear = "<leader>ac",
