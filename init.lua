@@ -53,26 +53,46 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
+      {
+        'williamboman/mason.nvim',
+        config = true,
+        opts = {
+          registries = {
+            "github:mason-org/mason-registry",
+            "github:Crashdummyy/mason-registry",
+          },
+        }
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       {
         "j-hui/fidget.nvim",
-        -- opts = {
-        --   notification = {
-        --     window = {
-        --       winblend = 0,
-        --       border = "rounded",
-        --     },
-        --   },
-        -- },
+        opts = {
+          notification = {
+            window = {
+              border = "rounded",
+            },
+          },
+        },
       },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
   },
+
+  {
+    'j-hui/fidget.nvim',
+    opts = {
+      notification = {
+        window = {
+          border = "rounded",
+        },
+      },
+    },
+  },
+
 
 
   -- Useful plugin to show you pending keybinds.
@@ -88,6 +108,12 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim'
     }
+  },
+
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+    event = 'VeryLazy'
   },
 
   { "nvim-neotest/nvim-nio" },
