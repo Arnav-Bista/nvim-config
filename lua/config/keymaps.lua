@@ -34,8 +34,8 @@ nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Fo
 nmap('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, '[W]orkspace [L]ist Folders')
 
 
-nmap('[d', vim.diagnostic.get_prev, "Go to previous diagnostic message")
-nmap(']d', vim.diagnostic.get_next, "Go to next diagnostic message")
+nmap('[d', vim.diagnostic.goto_prev, "Go to previous diagnostic message")
+nmap(']d', vim.diagnostic.goto_next, "Go to next diagnostic message")
 nmap('<leader>e', vim.diagnostic.open_float, "Open floating diagnostic message")
 nmap('<leader>q', vim.diagnostic.setloclist, "Open diagnostics list")
 
