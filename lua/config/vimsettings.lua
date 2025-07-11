@@ -101,5 +101,5 @@ vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-
+vim.keymap.set('n', '<leader>sb', function() require('telescope.builtin').live_grep({ grep_open_files = true }) end, { desc = '[S]earch [Buffers]' })
 vim.g.python3_host_prog = '/usr/bin/python3'
