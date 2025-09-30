@@ -32,7 +32,7 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -267,6 +267,13 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  rust_analyzer = {
+    ['rust-analyzer'] = {
+      check = {
+        command = "clippy",
+      },
+    }
+  },
 }
 
 -- Setup neovim lua configuration
@@ -282,6 +289,7 @@ mason_lspconfig.setup {
   automatic_enable = true,
   ensure_installed = vim.tbl_keys(servers),
 }
+
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
